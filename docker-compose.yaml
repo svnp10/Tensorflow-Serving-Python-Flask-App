@@ -4,7 +4,7 @@ services:
 
   tf-serving-server:
     container_name: tf-serving-server
-    image: $USER/tensorflow-serving-gan:v1.0
+    image: svnp10/tensorflow-serving:latest
     command: /serving/bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=9000 --model_name=gan --model_base_path=/serving/gan-export &> gan_log &
     networks:
       - tf_serving
@@ -13,7 +13,7 @@ services:
 
   tf-serving-client:
     container_name: tf-serving-client
-    image: $USER/tensorflow-serving-client:latest
+    image: svnp10/tf-serving-python-flask-webapp:latest
     networks:
       - tf_serving
     ports:
